@@ -1,0 +1,152 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="movilidad_form_view">
+            <field name="name">movilidad.form</field>
+            <field name="model">movilidad.trimestre</field>
+            <field name="arch" type="xml">
+                    <form string="Trimestre">
+                            <group>
+                                <group>
+                                    <field name="mes"/>
+
+                                    <field name="empleado"/>
+                                    <field name="trimestre"/>
+                                    <field name="categoria"/>
+
+
+                                </group>
+                                <group>
+                                    <field name="monto_categoria"/>
+                                    <field name="cant_dias"/>
+                                    <field name="monto_dia"/>
+
+                                    <field name="monto_total"/>
+                                </group>
+                            </group>
+                    </form>
+                </field>
+        </record>
+
+        <record model="ir.ui.view" id="movilidad_tree_view">
+            <field name="name">movilidad.tree</field>
+            <field name="model">movilidad.trimestre</field>
+            <field name="arch" type="xml">
+
+                <tree string="Listado por empleado">
+                    <field name="empleado"/>
+                    <field name="mes"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="nuevo_movilidad_action">
+            <field name="name">Movilidad</field>
+            <field name="res_model">movilidad.trimestre</field>
+            <field name="view_type">tree</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="movilidad_tree_view" />
+        </record>
+
+        <record model="ir.actions.act_window" id="nuevo_movilidad_action_form">
+            <field name="name">Movilidad</field>
+            <field name="res_model">movilidad.trimestre</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="movilidad_form_view" />
+        </record>
+
+        <menuitem id="main_movilidad_menu" name="Movilidad" action="nuevo_movilidad_action"/>
+
+        <!-- <menuitem id="puntoingreso_menu" name="Punto ingreso"
+                  parent="main_puntoingreso_menu"/>
+
+        <menuitem id="service_menu" name="Services" parent="puntoingreso_menu"
+                  action="service_list_action"/> -->
+
+        <menuitem id="nuevo_movilidad_menu" name="Nuevo" action="nuevo_movilidad_action_form" parent="main_movilidad_menu"/>
+
+
+        <!-- <record model="ir.actions.act_window" id="movilidad_list_action">
+            <field name="name">Movilidad</field>
+            <field name="res_model">movilidad.trimestre</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Calcular trimestre</p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="nuevo_service_action">
+            <field name="name">Service</field>
+            <field name="res_model">puntoingreso.service</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="puntoingreso_service_form_view" />
+        </record>
+
+        <menuitem id="main_puntoingreso_menu" name="Punto ingreso" action="nuevo_service_action" web_icon="puntoingreso,static/description/icon.png"/>
+
+        <menuitem id="puntoingreso_menu" name="Punto ingreso"
+                  parent="main_puntoingreso_menu"/>
+
+        <menuitem id="service_menu" name="Services" parent="puntoingreso_menu"
+                  action="service_list_action"/>
+
+        <menuitem id="nuevo_service_menu" name="Nuevo" action="nuevo_service_action" parent="puntoingreso_menu"/>
+ -->
+
+
+<!--
+        <record id="service_tree_no_delete" model="ir.ui.view">
+            <field name="name">service.tree.no.delete</field>
+            <field name="model">puntoingreso.service</field>
+            <field name="inherit_id" ref="service_tree_view" />
+            <field name="arch" type="xml">
+
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="delete">false</attribute>
+                </xpath>
+
+            </field>
+        </record>
+ -->
+
+        <record model="ir.ui.view" id="movilidad_search_view">
+            <field name="name">movilidad.search</field>
+            <field name="model">movilidad.trimestre</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="empleado"/>
+                    <field name="mes"/>
+
+                    <!-- <filter name="active" string="Active services"
+                            domain="[('active', '=', True)]"/>
+
+                    <filter name="facturado" string="Factura vacia" domain="[('facturado', '=', False)]"/>
+                    <filter name="facturado" string="Factura individual" domain="[('facturado', '=', 'Factura individual')]"/>
+
+                    <filter name="validado" string="Validado" domain="[('validado', '=', True)]"/>
+                    <filter name="validado" string="No validado" domain="[('validado', '=', False)]"/>
+
+
+                        <filter name="service_date" string="Estudios de hoy"
+                            domain="[('service_date', '&gt;', (datetime.date.today()).strftime('%Y/%m/%d 00:00:00')),('service_date', '&lt;', (datetime.date.today()).strftime('%Y/%m/%d 23:59:59'))]"/>
+ -->
+
+                    <group string="Group By">
+                        <!-- <filter name="active" string="Active" context="{'group_by': 'active'}"/> -->
+<!--                         <filter name="osocial" string="Obra Social" context="{'group_by': 'osocial'}"/>
+                        <filter name="state" string="Estado" context="{'group_by': 'state'}"/>
+                        <filter name="service_date" string="Service date" context="{'group_by': 'service_date'}"/>
+                        <filter name="variant_id" string="Variante" context="{'group_by': 'variant_id'}"/>
+                        <filter name="doctor_ids" string="Doctor" context="{'group_by': 'doctor_ids'}"/>
+                        <filter name="patient_ids" string="Patient" context="{'group_by': 'patient_ids'}"/> -->
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>
